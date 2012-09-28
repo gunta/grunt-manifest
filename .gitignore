@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+tmp
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+*.iml
+*.ipr
+*.iws
+.idea/
