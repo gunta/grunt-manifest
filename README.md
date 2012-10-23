@@ -93,6 +93,7 @@ manifest: {
       fallback: ["/ /offline.html"],
       exclude: ["js/jquery.min.js"],
       preferOnline: true,
+      verbose: true,
       timestamp: true
     },
     src: [
