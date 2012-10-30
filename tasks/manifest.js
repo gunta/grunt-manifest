@@ -63,14 +63,18 @@ module.exports = function (grunt) {
     }
 
     // Add files to explicit cache manually
-    cacheFiles.forEach(function (item) {
-      contents += item + "\n";
-    });
+    if (cacheFiles) {
+      cacheFiles.forEach(function (item) {
+        contents += item + "\n";
+      });
+    }
 
     // Add files to explicit cache
-    files.forEach(function (item) {
-      contents += item + "\n";
-    });
+    if (files) {
+      files.forEach(function (item) {
+        contents += item + "\n";
+      });
+    }
 
     // Network section
     if (options.network) {
