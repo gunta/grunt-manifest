@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     // If we have a basePath, specify it
     if (this.data.options.basePath) {
       //var base = grunt.file.expandDirs(this.data.options.basePath);
-      var base = this.data.options.basePath;
+      var base = grunt.template.process(this.data.options.basePath);
       grunt.file.setBase(base);
     }
 
