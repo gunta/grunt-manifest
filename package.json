@@ -1,5 +1,5 @@
 {
-  "name": "grunt-contrib-manifest",
+  "name": "grunt-contrib-manifest-tyro",
   "description": "Generate HTML5 Cache Manifest files",
   "version": "0.2.0",
   "homepage": "https://github.com/gunta/grunt-contrib-manifest",
