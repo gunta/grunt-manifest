@@ -7,6 +7,8 @@
  * https://github.com/gruntjs/grunt-contrib-jst/blob/master/LICENSE-MIT
  */
 
+var path = require("path");
+
 module.exports = function (grunt) {
   "use strict";
 
@@ -16,10 +18,11 @@ module.exports = function (grunt) {
     var options = helpers.options(this, {verbose: true, timestamp:true});
 
     // If we have a basePath, specify it
+    var expandOptions = {};
+    var destFile = this.file.dest;
     if (this.data.options.basePath) {
-      //var base = grunt.file.expandDirs(this.data.options.basePath);
-      var base = this.data.options.basePath;
-      grunt.file.setBase(base);
+      expandOptions.cwd = this.data.options.basePath;
+      destFile = path.join(this.data.options.basePath, destFile);
     }
 
     // TODO: ditch this when grunt v0.4 is released
@@ -27,8 +30,7 @@ module.exports = function (grunt) {
 
     var verbose = true;
     var done = this.async();
-    var files = grunt.file.expandFiles(this.file.src);
-    var destFile = this.file.dest;
+    var files = grunt.file.expandFiles(expandOptions, this.file.srcRaw);
     var contents = "CACHE MANIFEST\n";
     var excludeFiles = options.exclude;
     var cacheFiles = options.cache;
