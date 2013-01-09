@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask("manifest", "Generate HTML5 cache manifest", function () {
 
-    var helpers = require("grunt-contrib-lib").init(grunt);
+    var helpers = require("grunt-lib-contrib").init(grunt);
     var options = helpers.options(this, {verbose: true, timestamp:true});
 
     // If we have a basePath, specify it
