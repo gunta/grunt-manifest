@@ -14,9 +14,11 @@ module.exports = function (grunt) {
 
     var helpers = require("grunt-lib-contrib").init(grunt);
     var options = helpers.options(this, {verbose: true, timestamp:true});
+    var oldBase;
 
     // If we have a basePath, specify it
     if (this.data.options.basePath) {
+      oldBase = process.cwd();
       //var base = grunt.file.expandDirs(this.data.options.basePath);
       var base = this.data.options.basePath;
       grunt.file.setBase(base);
@@ -105,6 +107,10 @@ module.exports = function (grunt) {
     // Write file to disk
     grunt.verbose.writeln("\n" + (contents).yellow);
     grunt.file.write(destFile, contents);
+    
+    if (oldBase) {
+      grunt.file.setBase(oldBase);
+    }
     done();
   });
 
