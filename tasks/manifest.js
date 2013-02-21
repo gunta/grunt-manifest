@@ -16,14 +16,15 @@ module.exports = function (grunt) {
     var options = this.options({verbose: true, timestamp: true});
     var done = this.async();
 
-    var contents = 'CACHE MANIFEST\n';
-
     grunt.verbose.writeflags(options, 'Options');
 
     this.files.forEach(function(file) {
 
       var files;
+      var cacheFiles = options.cache;
+      var contents = 'CACHE MANIFEST\n';
 
+      // check to see if src has been set
       if (typeof file.src === "undefined") {
         grunt.fatal('Need to specify which files to include in the manifest.', 2);
       }
@@ -58,9 +59,19 @@ module.exports = function (grunt) {
       // Cache section
       contents += '\nCACHE:\n';
 
-      files.forEach(function (item) {
-        contents += item + '\n';
-      });
+      // add files to explicit cache manually
+      if (cacheFiles) {
+        cacheFiles.forEach(function (item) {
+          contents += item + '\n';
+        });
+      }
+
+      // add files to explicit cache
+      if (files) {
+        files.forEach(function (item) {
+          contents += item + '\n';
+        });
+      }
 
       // Network section
       if (options.network) {
