@@ -12,11 +12,8 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    lint: {
-      all: ['grunt.js', 'tasks/*.js', '<config:nodeunit.tasks>']
-    },
-
     jshint: {
+      all: ['Gruntfile.js', 'tasks/*.js', '<%= nodeunit.tests %>'],
       options: {
         curly: true,
         eqeqeq: true,
@@ -42,23 +39,23 @@ module.exports = function(grunt) {
     manifest: {
       generate: {
         options: {
-          basePath: "test/fixtures/",
+          basePath: 'test/fixtures',
           timestamp: false
         },
         src: [
-          "*.js",
-          "*.css",
-          "folder_one/*",
-          "folder_two/*.js",
-          "folder_two/*.css"
+          '*.js',
+          '*.css',
+          'folder_one/*',
+          'folder_two/*.js',
+          'folder_two/*.css'
         ],
-        dest: "../../tmp/manifest.appcache"
+        dest: 'tmp/manifest.appcache'
       }
     },
 
     // Unit tests.
     nodeunit: {
-      tasks: ['test/*_test.js']
+      tests: ['test/*_test.js']
     }
   });
 
@@ -66,13 +63,14 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   // The clean plugin helps in testing.
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
+  // Whenever the 'test' task is run, first clean the 'tmp' dir, then run this
   // plugin's task(s), then test the result.
-  grunt.renameTask('test', 'nodeunit');
-  grunt.registerTask('test', 'clean manifest nodeunit');
+  grunt.registerTask('test', ['clean', 'manifest', 'nodeunit', 'clean']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', 'lint test');
+  grunt.registerTask('default', ['jshint', 'test']);
 };
