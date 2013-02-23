@@ -88,7 +88,7 @@ manifest: {
   generate: {
     options: {
       basePath: "../",
-      cache: ["js/app.js?rel=3230239039", "css/style?rel=43049"]
+      cache: ["js/app.js", "css/style.css"]
       network: ["http://*", "https://*"],
       fallback: ["/ /offline.html"],
       exclude: ["js/jquery.min.js"],
@@ -114,8 +114,8 @@ CACHE MANIFEST
 # Time: Mon Jan 01 2155 22:23:24 GMT+0900 (JST)
 
 CACHE:
-js/app.js?rel=3230239039
-css/style?rel=43049
+js/app.js
+css/style
 css/style.css
 js/zepto.min.js
 js/script.js
@@ -126,6 +126,11 @@ NETWORK:
 *
 
 ```
+
+You do need to be fully aware of standard browser caching.
+If the files in `CACHE` are in the network cache, they won't actually update,
+since the network cache will spit back the same file to the application cache.
+Therefore, it's recommended to add a hash to the filenames's, akin to rails or yeoman.
 
 
 ## Release History
