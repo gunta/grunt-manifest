@@ -42,7 +42,7 @@ By default the standard ```manifest.appcache``` filename will be used.
 
 ##### basePath (optional)  ```string```
 
-Sets the base path. **It's recommended to set this**.
+Sets the base path for **input files**. **It's recommended to set this**.
 
 ##### cache (optional)  ```string```
 

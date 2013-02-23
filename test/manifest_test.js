@@ -1,19 +1,16 @@
+'use strict';
+
 var grunt = require('grunt');
 
-exports['manifest'] = {
-  main: function(test) {
-    'use strict';
-
-    var expect, result;
-
+exports.manifest = {
+  generate: function(test) {
     test.expect(1);
 
-    expect = grunt.file.read("test/expected/manifest.appcache");
-    result = grunt.file.read("tmp/manifest.appcache");
+    var actual = grunt.file.read('tmp/manifest.appcache');
+    var expected = grunt.file.read('test/expected/manifest.appcache');
 
-    test.equal(expect, result, "should generate a cache manifest");
+    test.equal(actual, expected, 'should generate a cache manifest.');
 
     test.done();
-
   }
 };
