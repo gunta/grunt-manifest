@@ -1,23 +1,23 @@
 {
-  "name": "grunt-contrib-manifest",
+  "name": "grunt-manifest",
   "description": "Generate HTML5 Cache Manifest files",
-  "version": "0.2.0",
-  "homepage": "https://github.com/gunta/grunt-contrib-manifest",
+  "version": "0.4.0",
+  "homepage": "https://github.com/gunta/grunt-manifest",
   "author": {
     "name": "Gunther Brunner",
     "url": "http://gunta.org/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gunta/grunt-contrib-manifest.git"
+    "url": "git://github.com/gunta/grunt-manifest.git"
   },
   "bugs": {
-    "url": "https://github.com/gunta/grunt-contrib-manifest/issues"
+    "url": "https://github.com/gunta/grunt-manifest/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/gunta/grunt-contrib-manifest/blob/master/LICENSE-MIT"
+      "url": "https://github.com/gunta/grunt-manifest/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",

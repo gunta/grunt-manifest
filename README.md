@@ -1,116 +1,146 @@
-# grunt-contrib-manifest [![Build Status](https://secure.travis-ci.org/gunta/grunt-contrib-manifest.png?branch=master)](http://travis-ci.org/gunta/grunt-contrib-manifest)
-> Generate HTML5 Cache Manifest files (will become part of the [grunt-contrib](https://github.com/gruntjs/grunt-contrib) collection). Submitted by [Gunther Brunner](/gunta).
+# grunt-manifest [![Build Status](https://secure.travis-ci.org/gunta/grunt-contrib-manifest.png?branch=master)](http://travis-ci.org/gunta/grunt-contrib-manifest)
+> Generate HTML5 Cache Manifest files. Submitted by [Gunther Brunner](@gunta).
 
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-contrib-manifest`
+This plugin requires Grunt `~0.4.0`
 
-Then add this line to your project's `grunt.js` gruntfile:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```javascript
-grunt.loadNpmTasks('grunt-contrib-manifest');
+```shell
+npm install grunt-manifest --save-dev
 ```
 
-[grunt]: https://github.com/cowboy/grunt
-[getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-manifest');
+```
 
 
-### Overview
 
-Inside your `grunt.js` file add a section named `manifest`.
+### HTML5 Cache Manifest task
+
+_Run this task with the `grunt manifest` command._
+
 Visit the [Appcache Facts](http://appcachefacts.info/) for more information on Cache Manifest files.
 
+Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
 
 
-#### Parameters
+### Parameters
 
-##### options ```object```
+#### options 
+Type: `Object`  
+Default: `{}`
+
 
 This controls how this task (and its helpers) operate and should contain key:value pairs, see options below.
 
-##### src (required)  ```string|array```
+#### src
+Type: `String` `Array`  
+Default: `undefined`   
 
 Sets the input files.
 
-##### dest (optional) ```string```
+#### dest
+Type: `String`	
+Default `manifest.appcache`
 
-Sets the name of the Cache Manifest file.
-By default the standard ```manifest.appcache``` filename will be used.
+Sets the name of the Cache Manifest file.	
+Remember that `.appcache` is now the W3C recommended file extension. 
 
-#### Options
+### Options
 
-##### basePath (optional)  ```string```
+#### basePath
+Type: `String`	
+Default: `undefined`	
 
-Sets the base path for **input files**. **It's recommended to set this**.
+Sets the base path for **input files**. **_It's recommended to set this_**.
 
-##### cache (optional)  ```string```
+#### cache
+Type: `String`	
+Default: `undefined`	
 
-Adds manually a string to the CACHE section. Needed when you have cache buster for example.
+Adds manually a string to the **CACHE** section. Needed when you have cache buster for example.
 
-##### exclude (optional)  ```string|array```
+#### exclude
+Type: `String` `Array`	
+Default: `undefined`	
 
 Exclude specific files from the Cache Manifest file.
 
-##### network (optional)  ```string|array```
+#### network
+Type: `String` `Array`	
+Default: `"*"` (By default, an online whitelist wildcard flag is added)		
 
-Adds a string to the NETWORK section.
-
-By default ```an online whitelist wildcard "*"``` flag is added.
+Adds a string to the **NETWORK** section.
 
 See [here](http://diveintohtml5.info/offline.html#network) for more information.
 
-##### fallback (optional)  ```string|array```
+#### fallback
+Type: `String` `Array`	
+Default: `undefined`	
 
-Adds a string to the FALLBACK section.
+Adds a string to the **FALLBACK** section.
 
 See [here](http://diveintohtml5.info/offline.html#fallback) for more information.
 
-##### preferOnline (optional)  ```boolean```
+#### preferOnline
+Type: `Boolean`		
+Default: `undefined`
 
-Adds a string to the SETTINGS section, specifically the cache mode flag of the ```prefer-online``` state.
+Adds a string to the **SETTINGS** section, specifically the cache mode flag of the ```prefer-online``` state.
 
 See [here](http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#concept-appcache-mode-prefer-online) for more information.
 
-##### verbose (optional)  ```boolean```
+#### verbose
+Type: `Boolean`		
+Default: `true`	
 
-Adds a "copyright" comment. **True** by default.
+Adds a meta "copyright" comment.
 
-##### timestamp (optional)  ```boolean```
+#### timestamp
+Type: `Boolean`		
+Default: `true`	
 
-Adds a timestamp as a comment for easy versioning. **True** by default.
+Adds a timestamp as a comment for easy versioning.
 
 
-#### Config Example
+### Config Example
 
-``` javascript
-manifest: {
-  generate: {
-    options: {
-      basePath: "../",
-      cache: ["js/app.js", "css/style.css"]
-      network: ["http://*", "https://*"],
-      fallback: ["/ /offline.html"],
-      exclude: ["js/jquery.min.js"],
-      preferOnline: true,
-      verbose: true,
-      timestamp: true
-    },
-    src: [
-    	"some_files/*.html",
-    	"js/*.min.js",
-    	"css/*.css"
-    ],
-    dest: "manifest.appcache"
+```js
+// Project configuration
+grunt.initConfig({
+  manifest: {
+    generate: {
+      options: {
+        basePath: "../",
+        cache: ["js/app.js", "css/style.css"]
+        network: ["http://*", "https://*"],
+        fallback: ["/ /offline.html"],
+        exclude: ["js/jquery.min.js"],
+        preferOnline: true,
+        verbose: true,
+        timestamp: true
+      },
+      src: [
+      	  "some_files/*.html",
+    	  "js/*.min.js",
+    	  "css/*.css"
+      ],
+      dest: "manifest.appcache"
+    }
   }
-}
+});
 ```
 
-#### Output example
+### Output example
 
 ```
 CACHE MANIFEST
-# This manifest was generated by grunt-contrib HTML5 Cache Manifest Generator
+# This manifest was generated by grunt-manifest HTML5 Cache Manifest Generator
 # Time: Mon Jan 01 2155 22:23:24 GMT+0900 (JST)
 
 CACHE:
@@ -128,13 +158,16 @@ NETWORK:
 ```
 
 You do need to be fully aware of standard browser caching.
-If the files in `CACHE` are in the network cache, they won't actually update,
+If the files in **CACHE** are in the network cache, they won't actually update,
 since the network cache will spit back the same file to the application cache.
-Therefore, it's recommended to add a hash to the filenames's, akin to rails or yeoman.
+Therefore, it's recommended to add a hash to the filenames's, akin to rails or yeoman. See [here](http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/) why query strings are not recommended.
+
 
 
 ## Release History
 
+* 2012/10/23 - v0.4.0 - Changed package and repository name to grunt-manifest.
+* 2012/10/23 - v0.3.0 - Upgraded to Grunt 0.4. Fixed dependencies. Fixed basePath.    
 * 2012/10/23 - v0.2.1 - Added possibility to manually specify "CACHE:" files. Made comments optional.
 * 2012/09/28 - v0.2.0 - Refactored from grunt-contrib into individual repo.
 

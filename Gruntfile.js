@@ -1,10 +1,10 @@
 /*
- * grunt-contrib-manifest
- * http://gruntjs.com/
+ * grunt-manifest
+ * https://github.com/gunta/grunt-manifest
  *
- * Copyright (c) 2012 Gunther Brunner, contributors
+ * Copyright (c) 2013 Gunther Brunner, contributors
  * Licensed under the MIT license.
- * https://github.com/gunta/grunt-contrib-manifest/blob/master/LICENSE-MIT
+ * https://github.com/gunta/grunt-manifest/blob/master/LICENSE-MIT
  */
 
 module.exports = function(grunt) {
@@ -14,20 +14,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
       all: ['Gruntfile.js', 'tasks/*.js', '<%= nodeunit.tests %>'],
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true,
-        es5: true
-      }
+	  jshintrc: '.jshintrc'
     },
 
     // Before generating any new files, remove any previously-created files.
