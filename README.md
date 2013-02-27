@@ -1,5 +1,5 @@
-# grunt-manifest [![Build Status](https://secure.travis-ci.org/gunta/grunt-contrib-manifest.png?branch=master)](http://travis-ci.org/gunta/grunt-contrib-manifest)
-> Generate HTML5 Cache Manifest files. Submitted by [Gunther Brunner](@gunta).
+# grunt-manifest [![Build Status](https://secure.travis-ci.org/gunta/grunt-manifest.png?branch=master)](http://travis-ci.org/gunta/grunt-manifest)
+> Generate HTML5 Cache Manifest files. Submitted by [Gunther Brunner](https://github.com/gunta/).
 
 
 ## Getting Started
