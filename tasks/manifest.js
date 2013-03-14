@@ -21,10 +21,11 @@ module.exports = function (grunt) {
 
       var files;
       var cacheFiles = options.cache;
+      var cachePrefix = (options.cachePrefix) ? options.cachePrefix : '';
       var contents = 'CACHE MANIFEST\n';
 
       // check to see if src has been set
-      if (typeof file.src === "undefined") {
+      if (typeof file.src === 'undefined') {
         grunt.fatal('Need to specify which files to include in the manifest.', 2);
       }
 
@@ -72,7 +73,7 @@ module.exports = function (grunt) {
       // add files to explicit cache
       if (files) {
         files.forEach(function (item) {
-          contents += encodeURI(item) + '\n';
+          contents += encodeURI(cachePrefix + item) + '\n';
         });
       }
 
