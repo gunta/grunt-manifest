@@ -118,7 +118,7 @@ grunt.initConfig({
     generate: {
       options: {
         basePath: '../',
-        cache: ['js/app.js', 'css/style.css']
+        cache: ['js/app.js', 'css/style.css'],
         network: ['http://*', 'https://*'],
         fallback: ['/ /offline.html'],
         exclude: ['js/jquery.min.js'],
