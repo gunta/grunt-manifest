@@ -117,21 +117,21 @@ grunt.initConfig({
   manifest: {
     generate: {
       options: {
-        basePath: "../",
-        cache: ["js/app.js", "css/style.css"]
-        network: ["http://*", "https://*"],
-        fallback: ["/ /offline.html"],
-        exclude: ["js/jquery.min.js"],
+        basePath: '../',
+        cache: ['js/app.js', 'css/style.css'],
+        network: ['http://*', 'https://*'],
+        fallback: ['/ /offline.html'],
+        exclude: ['js/jquery.min.js'],
         preferOnline: true,
         verbose: true,
         timestamp: true
       },
       src: [
-      	  "some_files/*.html",
-    	  "js/*.min.js",
-    	  "css/*.css"
+      	'some_files/*.html',
+    	  'js/*.min.js',
+    	  'css/*.css'
       ],
-      dest: "manifest.appcache"
+      dest: 'manifest.appcache'
     }
   }
 });
