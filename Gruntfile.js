@@ -28,16 +28,12 @@ module.exports = function(grunt) {
 		manifest: {
 			generate: {
 				options: {
-					basePath: 'test/fixtures',
-					timestamp: false
+					timestamp: false,
+					cache: ['external/lib.js']
 				},
-				src: [
-					'*.js',
-					'*.css',
-					'folder_one/*',
-					'folder_two/*.js',
-					'folder_two/*.css'
-				],
+				cwd: 'test/fixtures',
+				src: '**',
+				filter: 'isFile',
 				dest: 'tmp/manifest.appcache'
 			}
 		},

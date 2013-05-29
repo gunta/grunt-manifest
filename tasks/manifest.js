@@ -12,6 +12,7 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask('manifest', 'Generate HTML5 cache manifest', function () {
 
+    var path = require('path');
     var options = this.options({verbose: true, timestamp: true});
     var done = this.async();
 
@@ -19,32 +20,12 @@ module.exports = function (grunt) {
 
     this.files.forEach(function(file) {
 
-      var files;
       var cacheFiles = options.cache;
       var contents = 'CACHE MANIFEST\n';
 
-      // check to see if src has been set
-      if (typeof file.src === "undefined") {
-        grunt.fatal('Need to specify which files to include in the manifest.', 2);
-      }
-
-      // if a basePath is set, expand using the original file pattern
-      if (options.basePath) {
-        files = grunt.file.expand({cwd: options.basePath}, file.orig.src);
-      } else {
-        files = file.src;
-      }
-
-      // Exclude files
-      if (options.exclude) {
-        files = files.filter(function (item) {
-          return options.exclude.indexOf(item) === -1;
-        });
-      }
-
       // Set default destination file
       if (!file.dest) {
-        file.dest = 'manifest.appcache';
+        file.dest = path.resolve(file.cwd || '', 'manifest.appcache');
       }
 
       if (options.verbose) {
@@ -58,16 +39,14 @@ module.exports = function (grunt) {
       // Cache section
       contents += '\nCACHE:\n';
 
+      // add files to explicit cache
+      file.src.forEach(function (item) {
+        contents += item + '\n';
+      });
+
       // add files to explicit cache manually
       if (cacheFiles) {
         cacheFiles.forEach(function (item) {
-          contents += item + '\n';
-        });
-      }
-
-      // add files to explicit cache
-      if (files) {
-        files.forEach(function (item) {
           contents += item + '\n';
         });
       }
