@@ -17,11 +17,19 @@ module.exports = function (grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    this.files.forEach(function(file) {
+    this.files.forEach(function (file) {
 
       var files;
       var cacheFiles = options.cache;
       var contents = 'CACHE MANIFEST\n';
+
+      // if hash options is specified it will be used to calculate
+      // a hash of local files that are included in the manifest
+      var hasher;
+
+      if (options.hash) {
+        hasher = require('crypto').createHash('sha256');
+      }
 
       // check to see if src has been set
       if (typeof file.src === "undefined") {
@@ -69,6 +77,12 @@ module.exports = function (grunt) {
       if (files) {
         files.forEach(function (item) {
           contents += item + '\n';
+
+          // hash file contents
+          if (options.hash) {
+            grunt.verbose.writeln('Hashing ' + options.basePath + item);
+            hasher.update(grunt.file.read(options.basePath + item), 'binary');
+          }
         });
       }
 
@@ -96,6 +110,11 @@ module.exports = function (grunt) {
       if (options.preferOnline) {
         contents += '\nSETTINGS:\n';
         contents += 'prefer-online\n';
+      }
+
+      // output hash to cache manifest
+      if (options.hash) {
+        contents += '\n# hash: ' + hasher.digest("hex");
       }
 
       grunt.verbose.writeln('\n' + (contents).yellow);

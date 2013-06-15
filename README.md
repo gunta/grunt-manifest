@@ -108,6 +108,15 @@ Default: `true`
 
 Adds a timestamp as a comment for easy versioning.
 
+Note: timestamp will invalidate application cache whenever cache manifest is rebuilt, even if contents of files in `src` have not changed.
+
+#### hash
+Type: `Boolean`
+Default: `false`
+
+Adds a sha256 hash of all `src` files (actual contents) as a comment.
+
+This will ensure that application cache invalidates whenever actual file contents change (it's recommented to set `timestamp` to `false` when `hash` is used).
 
 ### Config Example
 
