@@ -17,6 +17,8 @@ module.exports = function (grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
+    var path = require('path');
+
     this.files.forEach(function (file) {
 
       var files;
@@ -81,7 +83,7 @@ module.exports = function (grunt) {
           // hash file contents
           if (options.hash) {
             grunt.verbose.writeln('Hashing ' + options.basePath + item);
-            hasher.update(grunt.file.read(options.basePath + item), 'binary');
+            hasher.update(grunt.file.read(path.join(options.basePath, item)), 'binary');
           }
         });
       }

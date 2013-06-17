@@ -29,7 +29,8 @@ module.exports = function(grunt) {
 			generate: {
 				options: {
 					basePath: 'test/fixtures',
-					timestamp: false
+					timestamp: false,
+                    hash: true
 				},
 				src: [
 					'*.js',

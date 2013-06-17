@@ -133,7 +133,8 @@ grunt.initConfig({
         exclude: ['js/jquery.min.js'],
         preferOnline: true,
         verbose: true,
-        timestamp: true
+        timestamp: true,
+        hash: true
       },
       src: [
       	'some_files/*.html',
@@ -165,6 +166,7 @@ some_files/about.html
 NETWORK:
 *
 
+# hash: 76f0ef591f999871e1dbdf6d5064d1276d80846feeef6b556f74ad87b44ca16a
 ```
 
 You do need to be fully aware of standard browser caching.
