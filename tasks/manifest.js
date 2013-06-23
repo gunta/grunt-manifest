@@ -61,14 +61,14 @@ module.exports = function (grunt) {
       // add files to explicit cache manually
       if (cacheFiles) {
         cacheFiles.forEach(function (item) {
-          contents += item + '\n';
+          contents += encodeURI(item) + '\n';
         });
       }
 
       // add files to explicit cache
       if (files) {
         files.forEach(function (item) {
-          contents += item + '\n';
+          contents += encodeURI(item) + '\n';
         });
       }
 
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
       if (options.network) {
         contents += '\nNETWORK:\n';
         options.network.forEach(function (item) {
-          contents += item + '\n';
+          contents += encodeURI(item) + '\n';
         });
       } else {
         // If there's no network section, add a default '*' wildcard
@@ -88,7 +88,7 @@ module.exports = function (grunt) {
       if (options.fallback) {
         contents += '\nFALLBACK:\n';
         options.fallback.forEach(function (item) {
-          contents += item + '\n';
+          contents += encodeURI(item) + '\n';
         });
       }
 
