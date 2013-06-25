@@ -118,6 +118,12 @@ Adds a sha256 hash of all `src` files (actual contents) as a comment.
 
 This will ensure that application cache invalidates whenever actual file contents change (it's recommented to set `timestamp` to `false` when `hash` is used).
 
+#### master
+Type: `String`|`Array`
+Default: `undefined`
+
+Hashes master html files (used with `hash`). Paths must be relative to the 'basePath'. This is useful when there are multiple html pages using one cache manifest and you don't want to explicitly include those pages in the manifest.
+
 ### Config Example
 
 ```js
@@ -134,7 +140,8 @@ grunt.initConfig({
         preferOnline: true,
         verbose: true,
         timestamp: true,
-        hash: true
+        hash: true,
+        master: ['index.html']
       },
       src: [
       	'some_files/*.html',
