@@ -55,6 +55,10 @@ module.exports = function (grunt) {
         contents += '# Time: ' + new Date() + '\n';
       }
 
+      if (options.revision) {
+    	  contents += '# Revision: ' + options.revision + '\n';
+      }
+      
       // Cache section
       contents += '\nCACHE:\n';
 
