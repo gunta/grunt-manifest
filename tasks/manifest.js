@@ -82,7 +82,11 @@ module.exports = function (grunt) {
       // add files to explicit cache
       if (files) {
         files.forEach(function (item) {
-          contents += encodeURI(item) + '\n';
+          if (options.process) {
+            contents += encodeURI(options.process(item)) + '\n';
+          } else {
+            contents += encodeURI(item) + '\n';
+          }
 
           // hash file contents
           if (options.hash) {
