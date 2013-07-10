@@ -108,6 +108,21 @@ Default: `true`
 
 Adds a timestamp as a comment for easy versioning.
 
+Note: timestamp will invalidate application cache whenever cache manifest is rebuilt, even if contents of files in `src` have not changed.
+
+#### hash
+Type: `Boolean`
+Default: `false`
+
+Adds a sha256 hash of all `src` files (actual contents) as a comment.
+
+This will ensure that application cache invalidates whenever actual file contents change (it's recommented to set `timestamp` to `false` when `hash` is used).
+
+#### master
+Type: `String` `Array`
+Default: `undefined`
+
+Hashes master html files (used with `hash`). Paths must be relative to the 'basePath'. This is useful when there are multiple html pages using one cache manifest and you don't want to explicitly include those pages in the manifest.
 
 ### Config Example
 
@@ -124,7 +139,9 @@ grunt.initConfig({
         exclude: ['js/jquery.min.js'],
         preferOnline: true,
         verbose: true,
-        timestamp: true
+        timestamp: true,
+        hash: true,
+        master: ['index.html']
       },
       src: [
       	'some_files/*.html',
@@ -156,6 +173,7 @@ some_files/about.html
 NETWORK:
 *
 
+# hash: 76f0ef591f999871e1dbdf6d5064d1276d80846feeef6b556f74ad87b44ca16a
 ```
 
 You do need to be fully aware of standard browser caching.
