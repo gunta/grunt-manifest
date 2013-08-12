@@ -17,11 +17,21 @@ module.exports = function (grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    this.files.forEach(function(file) {
+    var path = require('path');
+
+    this.files.forEach(function (file) {
 
       var files;
       var cacheFiles = options.cache;
       var contents = 'CACHE MANIFEST\n';
+
+      // if hash options is specified it will be used to calculate
+      // a hash of local files that are included in the manifest
+      var hasher;
+
+      if (options.hash) {
+        hasher = require('crypto').createHash('sha256');
+      }
 
       // check to see if src has been set
       if (typeof file.src === "undefined") {
@@ -56,9 +66,9 @@ module.exports = function (grunt) {
       }
 
       if (options.revision) {
-    	  contents += '# Revision: ' + options.revision + '\n';
+        contents += '# Revision: ' + options.revision + '\n';
       }
-      
+
       // Cache section
       contents += '\nCACHE:\n';
 
@@ -72,7 +82,17 @@ module.exports = function (grunt) {
       // add files to explicit cache
       if (files) {
         files.forEach(function (item) {
-          contents += encodeURI(item) + '\n';
+          if (options.process) {
+            contents += encodeURI(options.process(item)) + '\n';
+          } else {
+            contents += encodeURI(item) + '\n';
+          }
+
+          // hash file contents
+          if (options.hash) {
+            grunt.verbose.writeln('Hashing ' + path.join(options.basePath, item));
+            hasher.update(grunt.file.read(path.join(options.basePath, item)), 'binary');
+          }
         });
       }
 
@@ -100,6 +120,26 @@ module.exports = function (grunt) {
       if (options.preferOnline) {
         contents += '\nSETTINGS:\n';
         contents += 'prefer-online\n';
+      }
+
+      // output hash to cache manifest
+      if (options.hash) {
+
+        // hash masters as well
+        if (options.master) {
+
+          // convert form string to array
+          if (typeof options.master === 'string') {
+            options.master = [options.master];
+          }
+
+          options.master.forEach(function (item) {
+            grunt.log.writeln('Hashing ' + path.join(options.basePath, item));
+            hasher.update(grunt.file.read(path.join(options.basePath, item)), 'binary');
+          });
+        }
+
+        contents += '\n# hash: ' + hasher.digest("hex");
       }
 
       grunt.verbose.writeln('\n' + (contents).yellow);

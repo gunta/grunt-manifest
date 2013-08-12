@@ -29,7 +29,8 @@ module.exports = function(grunt) {
 			generate: {
 				options: {
 					basePath: 'test/fixtures',
-					timestamp: false
+					timestamp: false,
+                    hash: true
 				},
 				src: [
 					'*.js',
@@ -39,7 +40,39 @@ module.exports = function(grunt) {
 					'folder_two/*.css'
 				],
 				dest: 'tmp/manifest.appcache'
-			}
+			},
+            master1: {
+                options: {
+                    basePath: 'test/fixtures',
+                    timestamp: false,
+                    hash: true,
+                    master: 'master1.html'
+                },
+                src: [
+                    '*.js',
+                    '*.css',
+                    'folder_one/*',
+                    'folder_two/*.js',
+                    'folder_two/*.css'
+                ],
+                dest: 'tmp/manifest1.appcache'
+            },
+            master1and2: {
+                options: {
+                    basePath: 'test/fixtures',
+                    timestamp: false,
+                    hash: true,
+                    master: ['master1.html', 'master2.html']
+                },
+                src: [
+                    '*.js',
+                    '*.css',
+                    'folder_one/*',
+                    'folder_two/*.js',
+                    'folder_two/*.css'
+                ],
+                dest: 'tmp/manifest2.appcache'
+            }
 		},
 
 		// Unit tests.
