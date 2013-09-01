@@ -66,6 +66,13 @@ Default: `undefined`
 
 Adds manually a string to the **CACHE** section. Needed when you have cache buster for example.
 
+#### process
+Type: `Function`
+Default: `undefined`
+
+A function to process src files path strings before adding them on the appcache
+manifest.
+
 #### exclude
 Type: `String` `Array`	
 Default: `undefined`	
@@ -141,12 +148,15 @@ grunt.initConfig({
         verbose: true,
         timestamp: true,
         hash: true,
-        master: ['index.html']
+        master: ['index.html'],
+        process: function(path) {
+          return path.substring('build/'.length);
+        }
       },
       src: [
-      	'some_files/*.html',
-    	  'js/*.min.js',
-    	  'css/*.css'
+      	'build/some_files/*.html',
+    	  'build/js/*.min.js',
+    	  'build/css/*.css'
       ],
       dest: 'manifest.appcache'
     }
