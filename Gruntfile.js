@@ -72,6 +72,18 @@ module.exports = function(grunt) {
                     'folder_two/*.css'
                 ],
                 dest: 'tmp/manifest2.appcache'
+            },
+            excludeTest: {
+                options: {
+                    basePath: 'test/fixtures',
+                    excludeDir: true,
+                    timestamp: false,
+                    hash: false,
+                    master: ['master1.html', 'master2.html'],
+                    exclude: ['*.html', '*/*.css']
+                },
+                src: ['**'],
+                dest: 'tmp/manifest3.appcache'
             }
 		},
 
