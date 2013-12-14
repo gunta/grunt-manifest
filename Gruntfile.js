@@ -76,7 +76,6 @@ module.exports = function(grunt) {
             excludeTest: {
                 options: {
                     basePath: 'test/fixtures',
-                    excludeDir: true,
                     timestamp: false,
                     hash: false,
                     master: ['master1.html', 'master2.html'],

@@ -46,11 +46,9 @@ module.exports = function (grunt) {
       }
 
       // Exclude directory
-      if (options.excludeDir) {
-        files = files.filter(function (item) {
-          return !grunt.file.isDir(options.basePath, item);
-        });
-      }
+      files = files.filter(function (item) {
+        return !grunt.file.isDir(options.basePath, item);
+      });
 
       // Exclude files
       if (options.exclude) {
