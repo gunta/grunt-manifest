@@ -1,4 +1,4 @@
-# grunt-manifest [![Build Status](https://travis-ci.org/gunta/grunt-manifest.png)](http://travis-ci.org/gunta/grunt-manifest)
+# grunt-manifest-ext [![Build Status](https://travis-ci.org/gunta/grunt-manifest.png)](http://travis-ci.org/gunta/grunt-manifest)
 > This is an extension of [grunt-manifest](https://github.com/gunta/grunt-manifest) that add some additional features like globbing pattern supported for `exclude` option and directory excluded by default.
 
 
