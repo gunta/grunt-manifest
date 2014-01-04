@@ -1,6 +1,8 @@
-# grunt-manifest [![Build Status](https://travis-ci.org/gunta/grunt-manifest.png)](http://travis-ci.org/gunta/grunt-manifest)
-> Generate HTML5 Cache Manifest files. Submitted by [Gunther Brunner](https://github.com/gunta/).
-
+# grunt-manifest-ext [![Build Status](https://travis-ci.org/KevinC1118/grunt-manifest-ext.png)](http://travis-ci.org/KevinC1118/grunt-manifest-ext)
+> This is a fork of [grunt-manifest](https://github.com/gunta/grunt-manifest) and add some additional features.
+>
+> 1. Globbing pattern supported for `exclude` option.
+> 2. Directory excluded by default.
 
 
 ## Getting Started
@@ -70,7 +72,7 @@ Adds manually a string to the **CACHE** section. Needed when you have cache bust
 Type: `String` `Array`	
 Default: `undefined`	
 
-Exclude specific files from the Cache Manifest file.
+Exclude specific files from the Cache Manifest file. (Globbing pattern supported)
 
 #### network
 Type: `String` `Array`	
@@ -136,7 +138,7 @@ grunt.initConfig({
         cache: ['js/app.js', 'css/style.css'],
         network: ['http://*', 'https://*'],
         fallback: ['/ /offline.html'],
-        exclude: ['js/jquery.min.js'],
+        exclude: ['js/jquery.min.js', 'js/vendors/{,*/}*.js'],
         preferOnline: true,
         verbose: true,
         timestamp: true,

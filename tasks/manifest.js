@@ -45,10 +45,15 @@ module.exports = function (grunt) {
         files = file.src;
       }
 
+      // Exclude directory
+      files = files.filter(function (item) {
+        return !grunt.file.isDir(options.basePath, item);
+      });
+
       // Exclude files
       if (options.exclude) {
         files = files.filter(function (item) {
-          return options.exclude.indexOf(item) === -1;
+          return !grunt.file.isMatch(options.exclude, item);
         });
       }
 
