@@ -1,6 +1,10 @@
 # grunt-manifest-ext [![Build Status](https://travis-ci.org/KevinC1118/grunt-manifest-ext.png)](http://travis-ci.org/KevinC1118/grunt-manifest-ext)
-> This is an extension of [grunt-manifest](https://github.com/gunta/grunt-manifest) that add some additional features like globbing pattern supported for `exclude` option and directory excluded by default.
+> This is a fork of [grunt-manifest](https://github.com/gunta/grunt-manifest) and add some additional features that the original project can not fulfill my requirements.
 
+> Features
+>
+> 1. Globbing pattern supported for `exclude` option.
+> 2. Directory excluded by default.
 
 
 ## Getting Started
