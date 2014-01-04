@@ -1,7 +1,7 @@
 {
   "name": "grunt-manifest-ext",
   "description": "Generate HTML5 Cache Manifest files. (Base on grunt-manifest and add some extra features.)",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "homepage": "https://github.com/KevinC1118/grunt-manifest-ext",
   "author": {
     "name": "Kevin Chiu",
