@@ -1,23 +1,23 @@
 {
-  "name": "grunt-manifest",
-  "description": "Generate HTML5 Cache Manifest files",
+  "name": "grunt-manifest-ext",
+  "description": "Generate HTML5 Cache Manifest files. (Base on grunt-manifest and add some extra features.)",
   "version": "0.4.0",
-  "homepage": "https://github.com/gunta/grunt-manifest",
+  "homepage": "https://github.com/KevinC1118/grunt-manifest-ext",
   "author": {
-    "name": "Gunther Brunner",
-    "url": "http://gunta.org/"
+    "name": "Kevin Chiu",
+    "url": "http://about.me/kevin_chiu"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gunta/grunt-manifest.git"
+    "url": "git://github.com/KevinC1118/grunt-manifest-ext.git"
   },
   "bugs": {
-    "url": "https://github.com/gunta/grunt-manifest/issues"
+    "url": "https://github.com/KevinC1118/grunt-manifest-ext/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/gunta/grunt-manifest/blob/master/LICENSE-MIT"
+      "url": "https://github.com/KevinC1118/grunt-manifest-ext/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
