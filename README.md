@@ -24,7 +24,7 @@ grunt.loadNpmTasks('grunt-manifest');
 
 _Run this task with the `grunt manifest` command._
 
-Visit the [Appcache Facts](http://appcachefacts.info/) for more information on Cache Manifest files.
+Visit the [Appcache Facts](http://appcache.offline.technology/) for more information on Cache Manifest files.
 
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
