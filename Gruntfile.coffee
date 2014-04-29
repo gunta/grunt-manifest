@@ -75,7 +75,7 @@ module.exports = (grunt) ->
 
     # Unit tests.
     nodeunit:
-      tests: ['test/*_test.js']
+      tests: ['test/manifest_test.coffee']
 
   # Actually load this plugin's task(s).
   grunt.loadTasks('tasks')
