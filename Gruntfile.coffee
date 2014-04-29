@@ -10,14 +10,6 @@
 module.exports = (grunt) ->
 	# Project configuration.
 	grunt.initConfig
-    jshint:
-      all: [
-        'Gruntfile.js'
-        'tasks/*.js'
-        '<%= nodeunit.tests %>'
-      ]
-      options:
-        jshintrc: '.jshintrc'
 
     # Before generating any new files, remove any previously-created files.
     clean:
@@ -27,50 +19,59 @@ module.exports = (grunt) ->
     manifest:
       generate:
         options:
-          basePath: 'test/fixtures'
           timestamp: false
           hash: true
-        src: [
-          '*.js'
-          '*.css'
-          'folder_one/*'
-          'folder_two/*.js'
-          'folder_two/*.css'
+        files: [
+          expand: true
+          cwd: 'test/fixtures'
+          src: [
+            '*.js'
+            '*.css'
+            'folder_one/*'
+            'folder_two/*.js'
+            'folder_two/*.css'
+          ]
+          dest: 'tmp/manifest.appcache'
         ]
-        dest: 'tmp/manifest.appcache'
 
       master1:
         options:
-          basePath: 'test/fixtures'
           timestamp: false
           hash: true
           master: 'master1.html'
-        src: [
-          '*.js'
-          '*.css'
-          'folder_one/*'
-          'folder_two/*.js'
-          'folder_two/*.css'
+        files: [
+          expand: true
+          cwd: 'test/fixtures'
+          src: [
+            '*.js'
+            '*.css'
+            'folder_one/*'
+            'folder_two/*.js'
+            'folder_two/*.css'
+          ]
+          dest: 'tmp/manifest1.appcache'
         ]
-        dest: 'tmp/manifest1.appcache'
 
       master1and2:
         options:
-          basePath: 'test/fixtures'
           timestamp: false
           hash: true
           master: [
             'master1.html'
             'master2.html'
           ]
-        src: [
-          '*.js'
-          '*.css'
-          'folder_one/*'
-          'folder_two/*.js'
-          'folder_two/*.css'
+        files: [
+          expand: true
+          cwd: 'test/fixtures'
+          src: [
+            '*.js'
+            '*.css'
+            'folder_one/*'
+            'folder_two/*.js'
+            'folder_two/*.css'
+          ]
+          dest: 'tmp/manifest2.appcache'
         ]
-        dest: 'tmp/manifest2.appcache'
 
     # Unit tests.
     nodeunit:
@@ -80,7 +81,6 @@ module.exports = (grunt) ->
   grunt.loadTasks('tasks')
 
   # The clean plugin helps in testing.
-  grunt.loadNpmTasks('grunt-contrib-jshint')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-contrib-nodeunit')
 
@@ -89,4 +89,4 @@ module.exports = (grunt) ->
   grunt.registerTask('test', ['clean', 'manifest', 'nodeunit', 'clean'])
 
   # By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test'])
+  grunt.registerTask('default', ['test'])

@@ -8,8 +8,8 @@
 #
 
 module.exports = (grunt) ->
-  crypto = require('crypto')
   path = require('path')
+  crypto = require('crypto')
   md5 = null
 
   updateHash = (filePath) ->
@@ -18,7 +18,15 @@ module.exports = (grunt) ->
     md5.update(data, 'binary')
 
   class AppCacheFile
-    constructor: (@src, @dest, options) ->
+    constructor: (filePair, options) ->
+      @src = filePair.src
+      @dest = filePair.dest || 'manifest.appcache'
+      @cwd = filePair.orig.cwd
+
+      # check to see if src has been set
+      if (typeof @src is 'undefined')
+        grunt.fatal('Must specify which files to include in the manifest.', 2)
+
       @output = 'CACHE MANIFEST'
       @verbose = options.verbose
       @timestamp = options.timestamp
@@ -27,7 +35,6 @@ module.exports = (grunt) ->
       @process = options.process
       @hash = options.hash
       @master = options.master
-      @basePath = options.basePath
 
       # if hash options is specified it will be used to calculate
       # a hash of local files that are included in the manifest
@@ -79,7 +86,7 @@ module.exports = (grunt) ->
 
           # hash file contents
           if (@hash)
-            updateHash(path.join(@basePath, item))
+            updateHash(item)
 
     renderNetwork: ->
       @writeln()
@@ -110,11 +117,16 @@ module.exports = (grunt) ->
       if (@hash)
         # hash masters as well
         if (@master)
-          # convert form string to array
+          # convert from string to array
           @master = [@master] if typeof @master is 'string'
 
           for item in @master
-            updateHash(path.join(@basePath, item))
+            item = path.join(@cwd, item) if @cwd
+            updateHash(item)
 
         @writeln()
         @writeln('# hash: ' + md5.digest("hex"))
+
+    createFile: ->
+      grunt.file.write(@dest, @output)
+      grunt.log.writeln('File "' + @dest + '" created.')
