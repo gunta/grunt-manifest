@@ -9,8 +9,8 @@
 
 module.exports = (grunt) ->
 	# Project configuration.
-	grunt.initConfig
 
+	grunt.initConfig
     # Before generating any new files, remove any previously-created files.
     clean:
       test: ['tmp']

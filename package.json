@@ -11,8 +11,8 @@
     {
       "name": "Ashley Brener",
       "url": "http://frisB.com/"
-    },
-  ]
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/gunta/grunt-manifest.git"
@@ -39,10 +39,10 @@
     "grunt-contrib-nodeunit": "~0.1.2"
   },
   "keywords": [
-    "gruntplugin"
-    "grunt"
-    "manifest"
-    "appcache"
+    "gruntplugin",
+    "grunt",
+    "manifest",
+    "appcache",
     "cache"
   ]
 }
