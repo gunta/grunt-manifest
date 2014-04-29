@@ -2,7 +2,7 @@
 # grunt-manifest
 # https://github.com/gunta/grunt-manifest
 #
-# Copyright (c) 2013 Gunther Brunner, contributors
+# Copyright (c) 2014 Gunther Brunner, Ashley Brener, contributors
 # Licensed under the MIT license.
 # https://github.com/gunta/grunt-manifest/blob/master/LICENSE-MIT
 #
@@ -20,7 +20,7 @@ module.exports = (grunt) ->
 
     for filePair in @files
       dest = filePair.dest || 'manifest.appcache'
-      
+
       # check to see if src has been set
       if (typeof filePair.src is 'undefined')
         grunt.fatal('Need to specify which files to include in the manifest.', 2)
