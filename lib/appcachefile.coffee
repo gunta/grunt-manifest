@@ -19,6 +19,7 @@ module.exports = (grunt) ->
 
   class AppCacheFile
     constructor: (filePair, options) ->
+      @cwd = filePair.cwd || ''
       @src = filePair.src
       @dest = filePair.dest || 'manifest.appcache'
       @cwd = filePair.orig.cwd
@@ -86,7 +87,7 @@ module.exports = (grunt) ->
 
           # hash file contents
           if (@hash)
-            updateHash(item)
+            updateHash(path.join(@cwd, item))
 
     renderNetwork: ->
       @writeln()
@@ -122,7 +123,7 @@ module.exports = (grunt) ->
 
           for item in @master
             item = path.join(@cwd, item) if @cwd
-            updateHash(item)
+            updateHash(path.join(@cwd, item))
 
         @writeln()
         @writeln('# hash: ' + md5.digest("hex"))

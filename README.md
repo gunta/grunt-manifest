@@ -47,12 +47,6 @@ This controls how this task (and its helpers) operate and should contain key:val
 
 ### Files
 
-#### expand
-Type: `Boolean`
-Default: `false`
-
-Makes src files relative to base path.
-
 #### cwd
 Type: `String`
 Default: `undefined`
@@ -151,7 +145,6 @@ grunt.initConfig({
         master: ['index.html']
       },
       files: [
-        expand: true,
         cwd: '../',
         src: [
         	'some_files/*.html',
