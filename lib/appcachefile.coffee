@@ -19,10 +19,9 @@ module.exports = (grunt) ->
 
   class AppCacheFile
     constructor: (filePair, options) ->
-      @cwd = filePair.cwd || ''
       @src = filePair.src
       @dest = filePair.dest || 'manifest.appcache'
-      @cwd = filePair.orig.cwd
+      @cwd = filePair.cwd || ''
 
       # check to see if src has been set
       if (typeof @src is 'undefined')
@@ -122,7 +121,6 @@ module.exports = (grunt) ->
           @master = [@master] if typeof @master is 'string'
 
           for item in @master
-            item = path.join(@cwd, item) if @cwd
             updateHash(path.join(@cwd, item))
 
         @writeln()

@@ -22,7 +22,6 @@ module.exports = (grunt) ->
           timestamp: false
           hash: true
         files: [
-          expand: true
           cwd: 'test/fixtures'
           src: [
             '*.js'
@@ -40,7 +39,6 @@ module.exports = (grunt) ->
           hash: true
           master: 'master1.html'
         files: [
-          expand: true
           cwd: 'test/fixtures'
           src: [
             '*.js'
@@ -61,7 +59,6 @@ module.exports = (grunt) ->
             'master2.html'
           ]
         files: [
-          expand: true
           cwd: 'test/fixtures'
           src: [
             '*.js'
