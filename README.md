@@ -34,64 +34,67 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 ### Parameters
 
-#### options 
+#### files
+Type: `Array`
+Default: `[]`
+
+See the [Globbing patterns](http://gruntjs.com/configuring-tasks#globbing-patterns) section of the Configuring tasks guide for globbing pattern examples.
+
+#### options
 Type: `Object`  
 Default: `{}`
 
-
 This controls how this task (and its helpers) operate and should contain key:value pairs, see options below.
+
+
+### Files
+
+#### cwd
+Type: `String`
+Default: `undefined`
+
+Sets the base path for **input files**. **_It's recommended to set this_**.
+
 
 #### src
 Type: `String` `Array`  
-Default: `undefined`   
+Default: `undefined`
 
 Sets the input files.
 
 #### dest
-Type: `String`	
+Type: `String`
 Default `manifest.appcache`
 
-Sets the name of the Cache Manifest file.	
-Remember that `.appcache` is now the W3C recommended file extension. 
+Sets the name of the Cache Manifest file.
+Remember that `.appcache` is now the W3C recommended file extension.
 
 ### Options
 
-#### basePath
-Type: `String`	
-Default: `undefined`	
-
-Sets the base path for **input files**. **_It's recommended to set this_**.
-
 #### cache
-Type: `String`	
-Default: `undefined`	
+Type: `String`
+Default: `undefined`
 
 Adds manually a string to the **CACHE** section. Needed when you have cache buster for example.
 
-#### exclude
-Type: `String` `Array`	
-Default: `undefined`	
-
-Exclude specific files from the Cache Manifest file.
-
 #### network
-Type: `String` `Array`	
-Default: `"*"` (By default, an online whitelist wildcard flag is added)		
+Type: `String` `Array`
+Default: `"*"` (By default, an online whitelist wildcard flag is added)
 
 Adds a string to the **NETWORK** section.
 
 See [here](http://diveintohtml5.info/offline.html#network) for more information.
 
 #### fallback
-Type: `String` `Array`	
-Default: `undefined`	
+Type: `String` `Array`
+Default: `undefined`
 
 Adds a string to the **FALLBACK** section.
 
 See [here](http://diveintohtml5.info/offline.html#fallback) for more information.
 
 #### preferOnline
-Type: `Boolean`		
+Type: `Boolean`
 Default: `undefined`
 
 Adds a string to the **SETTINGS** section, specifically the cache mode flag of the ```prefer-online``` state.
@@ -99,14 +102,14 @@ Adds a string to the **SETTINGS** section, specifically the cache mode flag of t
 See [here](http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#concept-appcache-mode-prefer-online) for more information.
 
 #### verbose
-Type: `Boolean`		
-Default: `true`	
+Type: `Boolean`
+Default: `true`
 
 Adds a meta "copyright" comment.
 
 #### timestamp
-Type: `Boolean`		
-Default: `true`	
+Type: `Boolean`
+Default: `true`
 
 Adds a timestamp as a comment for easy versioning.
 
@@ -134,23 +137,25 @@ grunt.initConfig({
   manifest: {
     generate: {
       options: {
-        basePath: '../',
         cache: ['js/app.js', 'css/style.css'],
         network: ['http://*', 'https://*'],
         fallback: ['/ /offline.html'],
-        exclude: ['js/jquery.min.js'],
         preferOnline: true,
         verbose: true,
         timestamp: true,
         hash: true,
         master: ['index.html']
       },
-      src: [
-      	'some_files/*.html',
-    	  'js/*.min.js',
-    	  'css/*.css'
-      ],
-      dest: 'manifest.appcache'
+      files: [
+        cwd: '../',
+        src: [
+        	'some_files/*.html',
+      	  'js/*.min.js',
+      	  'css/*.css',
+          '!js/jquery.min.js'
+        ],
+        dest: 'manifest.appcache'
+      ]
     }
   }
 });
@@ -187,9 +192,8 @@ Therefore, it's recommended to add a hash to the filenames's, akin to rails or y
 
 ## Release History
 
+* 2012/10/23 - v0.4.1 - Ported to coffeescript, removed basePath and exclude options, changed hasher to md5.
 * 2012/10/23 - v0.4.0 - Changed package and repository name to grunt-manifest.
-* 2012/10/23 - v0.3.0 - Upgraded to Grunt 0.4. Fixed dependencies. Fixed basePath.    
+* 2012/10/23 - v0.3.0 - Upgraded to Grunt 0.4. Fixed dependencies. Fixed basePath.
 * 2012/10/23 - v0.2.1 - Added possibility to manually specify "CACHE:" files. Made comments optional.
 * 2012/09/28 - v0.2.0 - Refactored from grunt-contrib into individual repo.
-
-
