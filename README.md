@@ -1,9 +1,6 @@
 # grunt-manifest [![Build Status](https://travis-ci.org/gunta/grunt-manifest.png)](http://travis-ci.org/gunta/grunt-manifest)
 > Generate HTML5 Cache Manifest files. 
 
-# IMPORTANT (!): 
-## Repository looking for mantainer currently.
-
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -197,6 +194,7 @@ Therefore, it's recommended to add a hash to the filenames's, akin to rails or y
 
 ## Release History
 
+* 2015/01/26 - v0.4.1 - Documented process for renaming files.
 * 2012/10/23 - v0.4.0 - Changed package and repository name to grunt-manifest.
 * 2012/10/23 - v0.3.0 - Upgraded to Grunt 0.4. Fixed dependencies. Fixed basePath.    
 * 2012/10/23 - v0.2.1 - Added possibility to manually specify "CACHE:" files. Made comments optional.
