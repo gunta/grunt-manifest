@@ -133,6 +133,13 @@ Default: `undefined`
 
 Hashes master html files (used with `hash`). Paths must be relative to the 'basePath'. This is useful when there are multiple html pages using one cache manifest and you don't want to explicitly include those pages in the manifest.
 
+#### absolutePaths
+Type: `Boolean`
+Default: `false`
+
+Generate cache files with absolute paths, `/test.js` instead of `test.js`.
+
+
 ### Config Example
 
 ```js

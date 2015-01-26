@@ -1,0 +1,12 @@
+CACHE MANIFEST
+
+CACHE:
+/test.js
+/test.css
+/folder_one/one.css
+/folder_one/one.js
+/folder_two/two.js
+/folder_two/two.css
+
+NETWORK:
+*
