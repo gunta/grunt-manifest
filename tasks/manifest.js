@@ -2,7 +2,7 @@
  * grunt-manifest
  * https://github.com/gunta/grunt-manifest
  *
- * Copyright (c) 2013 Gunther Brunner, contributors
+ * Copyright (c) 2015 Gunther Brunner, contributors
  * Licensed under the MIT license.
  * https://github.com/gunta/grunt-manifest/blob/master/LICENSE-MIT
  */

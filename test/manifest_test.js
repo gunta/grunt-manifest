@@ -14,12 +14,14 @@ exports.manifest = {
     actual = grunt.file.read('tmp/manifest1.appcache');
     expected = grunt.file.read('test/expected/manifest1.appcache');
 
-    test.equal(actual, expected, 'should generate a cache manifest (with master1.html as master).');
+    test.equal(actual, expected,
+      'should generate a cache manifest (with master1.html as master).');
 
     actual = grunt.file.read('tmp/manifest2.appcache');
     expected = grunt.file.read('test/expected/manifest2.appcache');
 
-    test.equal(actual, expected, 'should generate a cache manifest (with master1.html & master2.html as masters).');
+    test.equal(actual, expected,
+      'should generate a cache manifest (with master1.html & master2.html as masters).');
 
     test.done();
   }
