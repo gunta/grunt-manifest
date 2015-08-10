@@ -1,7 +1,7 @@
 {
   "name": "grunt-manifest",
   "description": "Generate HTML5 Cache Manifest files",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "homepage": "https://github.com/gunta/grunt-manifest",
   "author": {
     "name": "Gunther Brunner",
