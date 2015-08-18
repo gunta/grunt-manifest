@@ -116,7 +116,7 @@ module.exports = function (grunt) {
       if (options.fallback) {
         contents += '\nFALLBACK:\n';
         options.fallback.forEach(function (item) {
-          contents += encodeURI(item) + '\n';
+          contents += encodeURI(item).replace('%20', ' ') + '\n';
         });
       }
 
