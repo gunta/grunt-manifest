@@ -18,8 +18,13 @@ module.exports = function (grunt) {
     grunt.verbose.writeflags(options, 'Options');
 
     var path = require('path');
+    var isExternal = /https?:/;
 
     this.files.forEach(function (file) {
+
+      var externalFiles = file.orig.src.filter(function(file) {
+          return isExternal.test(file);
+      });
 
       var files;
       var cacheFiles = options.cache;
@@ -99,6 +104,14 @@ module.exports = function (grunt) {
           }
         });
       }
+
+      // add external files to explicit cache
+      if (externalFiles) {
+        externalFiles.forEach(function (item) {
+          contents += item + '\n';
+        });
+      }
+
 
       // Network section
       if (options.network) {
