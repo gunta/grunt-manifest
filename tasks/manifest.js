@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 
       // if a basePath is set, expand using the original file pattern
       if (options.basePath) {
-        files = grunt.file.expand({cwd: options.basePath}, file.orig.src);
+        files = grunt.file.expand({cwd: options.basePath, filter: 'isFile'}, file.orig.src);
       } else {
         files = file.src;
       }
