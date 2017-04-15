@@ -84,6 +84,12 @@ Default: `"*"` (By default, an online whitelist wildcard flag is added)
 
 Adds a string to the **NETWORK** section.
 
+#### process
+Type: `Function(String): String`
+Default: `undefined`
+
+Manipulates file strings before they're stored in passed to `encodeURI` for storage in manifest.
+
 See [here](http://diveintohtml5.info/offline.html#network) for more information.
 
 #### fallback
